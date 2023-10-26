@@ -2,5 +2,91 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+} 
+
+body {
+    background-color: black;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.add-button {
+    margin-top: 2rem;
+    color: whitesmoke;
+    border: none;
+    font-size: 1rem;
+    background-color: darkcyan;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+}
+
+.task-input {
+    width: 90%;
+    max-width: 40rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-input-text {
+    display: block;
+    padding: 0.75rem;
+    width: 89%;
+    font-size: 1rem;
+    outline: none;
+}
+
+.task-input-button {
+    width: 10%;
+    outline: none;
+    font-size: 1.5rem;
+    color: whitesmoke;
+    background-color: darkcyan;
+    border: none;
+    border-radius: 2px;
+}
+
+.list {
+    color: whitesmoke;
+    border-spacing: 0 5px;
+    width: 90%;
+    max-width: 40rem;
+}
+
+.list-row {
+    background-color: rgb(28, 28, 28);
+}
+
+.list-row td {
+    padding: 1rem;
+}
+
+.delete-button {
+    background-color: whitesmoke;
+    padding: .25rem;
+    width: 1.5rem;
+    border-radius: 50%;
+}
+.delete-button:hover{
+    background-color: lightcoral;
+}
+
+.list-row-checkbox {
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    margin-right: 1rem;
+    background-color: whitesmoke;
+}
+
+.list-row-checkbox:hover {
+    background-color: lightblue;
+
 }
 

@@ -3,7 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
     <title>To Do List</title>
+    <script src="script.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <div id="root" class="container">
+      <button class="add-button" onclick="onAddButtonClick()">
+        Add Task +
+      </button>
+      <div class="task-input">
+        <!-- <input
+          type="text"
+          class="task-input-text"
+          name="task-text"
+          id="task-text"
+          placeholder="Enter task here"
+        />
+        <button class="task-input-button" onclick="onPlusButtonClick()">+</button> -->
+      </div>
+      <table class="list">
+        <tr class="list-row">
+          <td><span class="list-row-checkbox"></span>Task 1</td>
+          <td align="right">
+            <img src="images/delete_icon.png" class="delete-button" />
+          </td>
+        </tr>
+        <tr class="list-row">
+          <td><span class="list-row-checkbox"></span>Task 2</td>
+          <td align="right">
+            <img src="images/delete_icon.png" class="delete-button" />
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
 </html>
