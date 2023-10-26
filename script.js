@@ -1,6 +1,9 @@
 const taskInputSection = document.querySelector('.task-input')
 const todoList = document.querySelector('.list')
 const inputBar = document.getElementById('task-text')
+const tasksCompletedCount = document.querySelector('.tasks-completed-count')
+const removeDoneTasksButton = document.querySelector('.remove-completed-tasks');
+removeDoneTasksButton.style.display = 'none'
 
 function createTaskHTML(row, taskText) {
     let textCell = document.createElement('TD')
@@ -36,6 +39,8 @@ function addTask() {
     createTaskHTML(row, inputText)
 
     deleteTask(row)
+    checkTask(row)
+    
 }
 
 function deleteTask(row) {
@@ -43,6 +48,18 @@ function deleteTask(row) {
     deleteButton.addEventListener('click', () => {
         row.remove()
     })
+}
+ 
+function checkTask(row) {
+    const checkbox = row.querySelector('.list-row-checkbox')
+    checkbox.addEventListener('click', () => {
+        checkbox.style.backgroundColor = 'green'
+        row.childNodes[0].style.textDecoration = 'line-through'
+        row.style.backgroundColor = 'black'
+
+        removeDoneTasksButton.style.display = 'block'
+    })
+    
 }
 
 function onPlusButtonClick() {
@@ -54,3 +71,5 @@ taskInputSection.addEventListener('keypress', (e) => {
         addTask()
     }
 })
+
+

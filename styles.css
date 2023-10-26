@@ -86,11 +86,25 @@ body {
     height: 1rem;
     width: 1rem;
     margin-right: 1rem;
-    background-color: whitesmoke;
+    background-color: gray;
+    color: gray;
+    border-radius: 50%;
 }
 
 .list-row-checkbox:hover {
-    background-color: lightblue;
+    background-color: lightgray;
+}
 
+.remove-completed-tasks {
+    padding: 0.25rem 1rem;
+    outline: none;
+    border: none;
+    background-color: lightcoral;
+    border-radius: 1rem;
+    opacity: 80%;
+}
+
+.remove-completed-tasks:hover {
+    opacity: 100%;
 }
 
