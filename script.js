@@ -1,33 +1,8 @@
-const addButton = document.querySelector(".add-button")
 const taskInputSection = document.querySelector('.task-input')
 const todoList = document.querySelector('.list')
-// const inputBar = document.getElementById('task-text')
+const inputBar = document.getElementById('task-text')
 
-
-function loadTaskInput() {
-    return `
-        <input
-        type="text"
-        class="task-input-text"
-        name="task-text"
-        id="task-text"
-        placeholder="Enter task here"
-        />
-        <button class="task-input-button" onclick="onPlusButtonClick()">+</button>
-    `
-}
-
-function addTask() {
-    const inputBar = document.getElementById('task-text')
-    let inputText = inputBar.value
-    if(inputText == "") {
-        alert("Please enter a task")
-        return
-    }
-
-    let row = document.createElement('TR')
-    row.classList.add('list-row')
-
+function createTaskHTML(row, taskText) {
     let textCell = document.createElement('TD')
 
     let checkbox = document.createElement('SPAN')
@@ -35,7 +10,7 @@ function addTask() {
 
     textCell.appendChild(checkbox)
 
-    textCell.append(document.createElement('P').innerHTML = inputText)
+    textCell.append(document.createElement('P').innerHTML = taskText)
 
     let deleteCell = document.createElement('TD')
     deleteCell.align = 'right'
@@ -46,8 +21,28 @@ function addTask() {
     todoList.appendChild(row)
 }
 
-function onAddButtonClick() {
-    taskInputSection.innerHTML = loadTaskInput()
+function addTask() {
+
+    let inputText = inputBar.value
+
+    if(inputText == "") {
+        alert("Please enter a task")
+        return
+    }
+
+    let row = document.createElement('TR')
+    row.classList.add('list-row')
+
+    createTaskHTML(row, inputText)
+
+    deleteTask(row)
+}
+
+function deleteTask(row) {
+    const deleteButton = row.querySelector('.delete-button')
+    deleteButton.addEventListener('click', () => {
+        row.remove()
+    })
 }
 
 function onPlusButtonClick() {
