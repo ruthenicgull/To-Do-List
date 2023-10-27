@@ -25,6 +25,7 @@ function createTaskHTML(row, taskText) {
 function addTask() {
     let inputText = inputBar.value
     inputBar.value = ""
+    inputBar.value = ""
     if(inputText == "") {
         alert("Please enter a task")
         return
@@ -32,6 +33,7 @@ function addTask() {
 
     let row = document.createElement('TR')
     row.classList.add('list-row')
+    row.setAttribute('data', 'incomplete')
     row.setAttribute('data', 'incomplete')
 
     createTaskHTML(row, inputText)
@@ -48,16 +50,20 @@ function deleteTask(row) {
         row.remove()
         saveTasks()
     })
+    saveTasks()
 }
  
 function checkTask(row) {
     const checkbox = row.querySelector('.list-row-checkbox')
     checkbox.addEventListener('click', () => {
         row.setAttribute('data', 'completed')
+        row.setAttribute('data', 'completed')
         checkbox.style.backgroundColor = 'green'
         row.childNodes[0].style.textDecoration = 'line-through'
         row.childNodes[0].style.color = 'darkgrey'
+        row.childNodes[0].style.color = 'darkgrey'
         row.style.backgroundColor = 'black'
+        saveTasks() 
         saveTasks() 
     })
     

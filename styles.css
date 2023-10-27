@@ -97,6 +97,11 @@ body {
     color: black;
 }
 
+.task-input-button:hover {
+    background-color: cyan;
+    color: black;
+}
+
 .list-table {
     color: whitesmoke;
     border-spacing: 0 5px;
