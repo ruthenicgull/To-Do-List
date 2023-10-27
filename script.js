@@ -50,20 +50,17 @@ function deleteTask(row) {
         row.remove()
         saveTasks()
     })
-    saveTasks()
 }
  
 function checkTask(row) {
     const checkbox = row.querySelector('.list-row-checkbox')
     checkbox.addEventListener('click', () => {
         row.setAttribute('data', 'completed')
-        row.setAttribute('data', 'completed')
         checkbox.style.backgroundColor = 'green'
         row.childNodes[0].style.textDecoration = 'line-through'
         row.childNodes[0].style.color = 'darkgrey'
         row.childNodes[0].style.color = 'darkgrey'
         row.style.backgroundColor = 'black'
-        saveTasks() 
         saveTasks() 
     })
     
