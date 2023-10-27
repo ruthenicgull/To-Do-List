@@ -32,6 +32,7 @@ a{
     padding: 0.25rem 1rem;
     background-color: whitesmoke;
     color: black;
+    border-radius: 1rem;
 }
 .nav-menu-item:hover {
     color: whitesmoke;
@@ -155,8 +156,11 @@ body {
     border-radius: 1rem;
     /* opacity: 50%; */
     background-color: darkcyan;
+    transition: all 200ms ease-in-out;
 }
 
 .del-done-tasks:hover {
-    background-color: cyan;
+    background-color: black;
+    border: 2px solid darkcyan;
+    color: whitesmoke;
 }

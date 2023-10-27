@@ -35,18 +35,19 @@ function addTask() {
     row.setAttribute('data', 'incomplete')
 
     createTaskHTML(row, inputText)
-    saveTasks()
     deleteTask(row)
     checkTask(row)
     deleteCompletedTasks()
+
+    saveTasks()
 }
 
 function deleteTask(row) {
     const deleteButton = row.querySelector('.delete-button')
     deleteButton.addEventListener('click', () => {
         row.remove()
+        saveTasks()
     })
-    saveTasks()
 }
  
 function checkTask(row) {
@@ -81,8 +82,8 @@ function deleteCompletedTasks() {
                 todoList.children[i].remove()
             }
         }
+        saveTasks()
     })
-    saveTasks()
 }
 
 function saveTasks() {
