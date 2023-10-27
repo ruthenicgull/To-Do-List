@@ -37,10 +37,10 @@ function addTask() {
     row.classList.add('list-row')
 
     createTaskHTML(row, inputText)
-
     deleteTask(row)
     checkTask(row)
-    
+    deleteCompletedTasks()
+    saveTasks()
 }
 
 function deleteTask(row) {
@@ -53,11 +53,21 @@ function deleteTask(row) {
 function checkTask(row) {
     const checkbox = row.querySelector('.list-row-checkbox')
     checkbox.addEventListener('click', () => {
-        checkbox.style.backgroundColor = 'green'
-        row.childNodes[0].style.textDecoration = 'line-through'
-        row.style.backgroundColor = 'black'
-
-        removeDoneTasksButton.style.display = 'block'
+        if(row.getAttribute('data','completed')) {
+            checkbox.style.backgroundColor = 'gray'
+            row.childNodes[0].style.textDecoration = 'none'
+            row.childNodes[0].style.color = 'whitesmoke'
+            row.style.backgroundColor = 'rgb(28, 28, 28)'
+            row.setAttribute('data','incomplete')
+        }
+        else {
+            row.setAttribute('data', 'completed')
+            checkbox.style.backgroundColor = 'green'
+            row.childNodes[0].style.textDecoration = 'line-through'
+            row.childNodes[0].style.color = 'darkgrey'
+            row.style.backgroundColor = 'black'
+        }
+        saveTasks() 
     })
     
 }
