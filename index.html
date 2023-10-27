@@ -10,10 +10,19 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-    <title>To Do List</title>
+    <title>Taskopia - A To Do List App</title>
     <script src="script.js" defer></script>
   </head>
   <body>
+    <nav class="nav-bar">
+      <h1 class="nav-heading">Taskopia</h1>
+      <ul class="nav-menu">
+        <li class="nav-menu-item">
+          <a class="nav-menu-link" href="about.html">About</a>
+        </li>
+        <li></li>
+      </ul>
+    </nav>
     <div id="root" class="container">
       <div class="task-input">
         <input
@@ -28,15 +37,17 @@
           +
         </button>
       </div>
-      <table class="list">
-        <!-- <tr class="list-row">
+      <table class="list-table">
+        <tbody class="list">
+          <!-- <tr class="list-row">
           <td><span class="list-row-checkbox"></span>Task 1</td>
           <td align="right">
             <img src="images/delete_icon.png" class="delete-button" />
           </td>
         </tr> -->
+        </tbody>
       </table>
-      <button class="remove-completed-tasks">Delete Completed Tasks</button>
+      <button class="del-done-tasks">Delete Completed Tasks</button>
     </div>
   </body>
 </html>

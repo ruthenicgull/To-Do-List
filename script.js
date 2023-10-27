@@ -2,8 +2,6 @@ const taskInputSection = document.querySelector('.task-input')
 const todoList = document.querySelector('.list')
 const inputBar = document.getElementById('task-text')
 const tasksCompletedCount = document.querySelector('.tasks-completed-count')
-const removeDoneTasksButton = document.querySelector('.remove-completed-tasks');
-removeDoneTasksButton.style.display = 'none'
 
 function createTaskHTML(row, taskText) {
     let textCell = document.createElement('TD')
@@ -25,9 +23,8 @@ function createTaskHTML(row, taskText) {
 }
 
 function addTask() {
-
     let inputText = inputBar.value
-
+    inputBar.value = ""
     if(inputText == "") {
         alert("Please enter a task")
         return
@@ -35,12 +32,13 @@ function addTask() {
 
     let row = document.createElement('TR')
     row.classList.add('list-row')
+    row.setAttribute('data', 'incomplete')
 
     createTaskHTML(row, inputText)
+    saveTasks()
     deleteTask(row)
     checkTask(row)
     deleteCompletedTasks()
-    saveTasks()
 }
 
 function deleteTask(row) {
@@ -48,25 +46,17 @@ function deleteTask(row) {
     deleteButton.addEventListener('click', () => {
         row.remove()
     })
+    saveTasks()
 }
  
 function checkTask(row) {
     const checkbox = row.querySelector('.list-row-checkbox')
     checkbox.addEventListener('click', () => {
-        if(row.getAttribute('data','completed')) {
-            checkbox.style.backgroundColor = 'gray'
-            row.childNodes[0].style.textDecoration = 'none'
-            row.childNodes[0].style.color = 'whitesmoke'
-            row.style.backgroundColor = 'rgb(28, 28, 28)'
-            row.setAttribute('data','incomplete')
-        }
-        else {
-            row.setAttribute('data', 'completed')
-            checkbox.style.backgroundColor = 'green'
-            row.childNodes[0].style.textDecoration = 'line-through'
-            row.childNodes[0].style.color = 'darkgrey'
-            row.style.backgroundColor = 'black'
-        }
+        row.setAttribute('data', 'completed')
+        checkbox.style.backgroundColor = 'green'
+        row.childNodes[0].style.textDecoration = 'line-through'
+        row.childNodes[0].style.color = 'darkgrey'
+        row.style.backgroundColor = 'black'
         saveTasks() 
     })
     
@@ -82,4 +72,38 @@ taskInputSection.addEventListener('keypress', (e) => {
     }
 })
 
+function deleteCompletedTasks() {
+    const deleteDoneTasksButton = document.querySelector('.del-done-tasks')
+    deleteDoneTasksButton.addEventListener('click', () => {
+        for(let i = 0; i < todoList.children.length; i++)
+        {
+            if(todoList.children[i].getAttribute('data') === 'completed') {
+                todoList.children[i].remove()
+            }
+        }
+    })
+    saveTasks()
+}
 
+function saveTasks() {
+    localStorage.setItem('tasks', todoList.innerHTML)
+}
+
+function loadTasks() {
+    todoList.innerHTML = localStorage.getItem('tasks')
+    const rows = document.querySelectorAll('.list-row')
+    rows.forEach((row)=>{
+        deleteTask(row)
+        checkTask(row)
+        deleteCompletedTasks()
+        if(row.getAttribute('data') === 'completed') {
+            let checkbox = row.querySelector('.list-row-checkbox')
+            checkbox.style.backgroundColor = 'green'
+            row.childNodes[0].style.textDecoration = 'line-through'
+            row.childNodes[0].style.color = 'darkgrey'
+            row.style.backgroundColor = 'black'
+        }
+    })
+}
+
+loadTasks()
